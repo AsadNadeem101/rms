@@ -19,57 +19,33 @@ class RolesAndPermissionsSeeder extends Seeder
 		$permissionsByRole = [
 
 		    'super_admin' => [
-			    ['name'=>'category_list'],
-			    ['name'=>'category_create'],
-			    ['name'=>'category_edit'],
-			    ['name'=>'category_show'],
-			    ['name'=>'category_delete'],
+			    ['name'=>'approver_list'],
+			    ['name'=>'approver_create'],
+			    ['name'=>'approver_edit'],
+			    ['name'=>'approver_show'],
+			    ['name'=>'approver_delete'],
 
-			    ['name'=>'product_list'],
-			    ['name'=>'product_create'],
-			    ['name'=>'product_edit'],
-			    ['name'=>'product_show'],
-			    ['name'=>'product_delete'],
+				['name'=>'region_list'],
+			    ['name'=>'region_create'],
+			    ['name'=>'region_edit'],
+			    ['name'=>'region_show'],
+			    ['name'=>'region_delete'],
 
-			    ['name'=>'customer_list'],
-			    ['name'=>'customer_edit'],
-			    ['name'=>'customer_show'],
-			    ['name'=>'customer_delete'],
-
-				['name'=>'tailor_list'],
-			    ['name'=>'tailor_create'],
-			    ['name'=>'tailor_edit'],
-			    ['name'=>'tailor_show'],
-			    ['name'=>'tailor_delete'],
-
-				['name'=>'order_list'],
-			    ['name'=>'order_edit'],
-			    ['name'=>'order_show'],
-			    ['name'=>'order_delete'],
-
-			    ['name'=>'analytics_list'],
-			    ['name'=>'analytics_create'],
-			    ['name'=>'analytics_edit'],
-			    ['name'=>'analytics_show'],
-			    ['name'=>'analytics_delete'],
-
-			    ['name'=>'all_orders'],
+			    ['name'=>'request_list'],
+			    ['name'=>'request_create'],
+			    ['name'=>'request_edit'],
+			    ['name'=>'request_show'],
+			    ['name'=>'request_delete'],
 
 		    ],
 		    
-		    'tailor' => [
+		    'approver' => [
 
-			    ['name'=>'product_list'],
-			    ['name'=>'product_show'],
-
-				['name'=>'order_list'],
-			    ['name'=>'order_show'],
-			    
-			    ['name' => 'tailor_order']
-		    ],
-		    
-		    'customer' => [
-			    ['name' => 'customer_order']
+			    ['name'=>'request_list'],
+			    ['name'=>'request_create'],
+			    ['name'=>'request_edit'],
+			    ['name'=>'request_show'],
+			    ['name'=>'request_delete'],
 		    ],
 		    
 		];

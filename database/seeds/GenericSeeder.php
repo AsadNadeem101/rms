@@ -19,8 +19,6 @@ class GenericSeeder extends Seeder
             'email'    => 'super_admin@stichery.com',
             'type'     => 'super_admin',
             'password' => Hash::make('12345678'),
-            'phone_no' => '03339999999',
-            'address' => 'lahore',
         ]);
         //Assigning role
         $super_admin->assignRole('super_admin');

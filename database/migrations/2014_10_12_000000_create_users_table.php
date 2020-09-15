@@ -20,9 +20,7 @@ class CreateUsersTable extends Migration
             $table->enum('status', ['active','deactivate'])->default('active');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone_no');
-            $table->string('address');
-            $table->enum('type',['super_admin','tailor','customer']);
+            $table->enum('type',['super_admin','approver']);
             $table->rememberToken();
             $table->timestamps();
         });
