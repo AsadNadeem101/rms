@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth'], function (){
         return view('welcome');
     });
 
+    Route::get('/', function(){
+        return view('welcome');
+    });
+
    
     //Profile
     Route::group(['prefix' => 'profile'], function (){
