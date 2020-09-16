@@ -27,6 +27,11 @@ Route::group(['middleware' => 'auth'], function (){
         return view('welcome');
     });
 
+    //Region
+    Route::resource('regions','RegionController');
+
+    //Approver
+    Route::resource('approvers','ApproverController');
    
     //Profile
     Route::group(['prefix' => 'profile'], function (){

@@ -70,25 +70,7 @@ class RegisterController extends Controller
             'email'     => $data['email'],
             'password'  => Hash::make($data['password']),
             'type'      => $data['type'],
-            'phone_no'  => $data['phone_no'],
-            'address'   => $data['address']
         ]);
-
-        switch ($data['type']) {
-            case 'tailor':
-                $user->assignRole('tailor');
-                return $user;
-                break;
-
-            case 'customer':
-                $user->assignRole('customer');
-                return $user;
-                break;
-
-            default:
-                return $user;
-                break;
-        }
 
         return $user;
     }
