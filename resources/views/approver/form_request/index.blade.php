@@ -1,34 +1,27 @@
 @extends('adminlte::page')
 
-@section('title', 'First Dropdown')
+@section('title', 'Form Requests')
 
 @section('content_header')
-    <h1>First Dropdown</h1>
+    <h1>Form Request's</h1>
 @stop
 
 @section('content')
-@if(session('created'))
+@if(session('accepted'))
 <div class="alert alert-success alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{session('created')}}
+    {{session('accepted')}}
 </div>
 @endif
-@if(session('updated'))
+@if(session('rejected'))
 <div class="alert alert-success alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{session('updated')}}
-</div>
-@endif
-@if(session('deleted'))
-<div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{session('deleted')}}
+    {{session('rejected')}}
 </div>
 @endif
 <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Dropdown Items</h3>
-              <a href="{{route('first_dropdowns.create')}}" class="btn btn-primary float-right">Add New +</a>
+              <h3 class="card-title">Requests</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -37,18 +30,28 @@
                 <tr>
                   <th>Id</th>
                   <th>Name</th>
+                  <th>Radio Button</th>
+                  <th>First Dropdown Item</th>
+                  <th>Second Dropdown Item</th>
+                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($dropdowns as $dropdown)
+                @foreach($requests as $request)
                 <tr>
                   <td>{{$loop->iteration}}</td>
-                  <td>{{$dropdown->name}}</td>
+                  <td>{{$request->name}}</td>
+                  <td>{{$request->radio_button}}</td>
+                  <td>{{$request->first_dropdown_item}}</td>
+                  <td>{{$request->second_dropdown_item}}</td>
+                  <td>{{$request->status}}</td>
                   <td>
-                    <a class="btn btn-success text-white" href="{{route('first_dropdowns.edit',$dropdown->id)}}">Edit</a>
-                    <a class="btn btn-danger text-white delete-content" href="{{route('first_dropdowns.edit',$dropdown->id)}}"
-                    data-url="{{route('first_dropdowns.destroy',$dropdown->id)}}" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                    @if($request->status == 'pending')
+                    <a class="btn btn-success text-white" href="{{route('approver.form_request.accept',$request->id)}}">Accept</a>
+                    <a class="btn btn-danger text-white delete-content" href=""
+                    data-url="{{route('approver.form_request.reject',$request->id)}}" data-toggle="modal" data-target="#rejectModal">Reject</a>
+                    @endif
                   </td>
                 </tr>
                 @endforeach
@@ -57,6 +60,10 @@
                 <tr>
                   <th>Id</th>
                   <th>Name</th>
+                  <th>Radio Button</th>
+                  <th>First Dropdown Item</th>
+                  <th>Second Dropdown Item</th>
+                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
                 </tfoot>
@@ -69,21 +76,21 @@
     <form action="" method="POST" class="delete-form">
     @csrf
     @method('DELETE')
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title" id="exampleModalLongTitle">Delete Item</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Reject Request</h5>
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this?
+                Are you sure you want to reject this request?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger">Reject</button>
             </div>
             </div>
         </div>

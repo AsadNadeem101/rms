@@ -52,3 +52,21 @@ Route::group(['middleware' => 'auth'], function (){
     
 });
 
+Route::get('/home','HomeController@index');
+Route::get('/get_second_dropdown','HomeController@second_dropdown');
+Route::post('/submit_form','HomeController@submit_form')->name('submit_form');
+
+Route::group(['middleware'=>['role:super_admin','auth']],function()
+{
+    Route::get('form_requests','FormRequestController@index');
+    Route::get('form_requests/accept/{id}','FormRequestController@accept_request')->name('form_request.accept');
+    Route::delete('form_requests/reject/{id}','FormRequestController@reject_request')->name('form_request.reject');
+});
+
+Route::group(['prefix'=>'/approver','middleware'=>['role:approver','auth']],function()
+{
+    Route::get('form_requests','ApproverFormRequestController@index');
+    Route::get('form_requests/accept/{id}','ApproverFormRequestController@accept_request')->name('approver.form_request.accept');
+    Route::delete('form_requests/reject/{id}','ApproverFormRequestController@reject_request')->name('approver.form_request.reject');
+});
+

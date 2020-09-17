@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\DataTables\ApproverDataTable;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Http\Requests\ApproverRequest;
+use App\Models\Region;
+use App\FormRequest;
 class ApproverController extends Controller
 {
     /**
@@ -25,7 +28,8 @@ class ApproverController extends Controller
      */
     public function create()
     {
-        return view('approver.create');
+        $regions=Region::all();
+        return view('approver.create',compact('regions'));
     }
 
     /**
@@ -34,12 +38,12 @@ class ApproverController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApproverRequest $request)
     {
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $approver = User::create($input);
-
+        $approver->assignRole('approver');
         return redirect()->route('approvers.index');
     }
 
@@ -90,4 +94,5 @@ class ApproverController extends Controller
     {
         //
     }
+
 }

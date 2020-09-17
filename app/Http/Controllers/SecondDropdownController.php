@@ -104,7 +104,6 @@ class SecondDropdownController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
         $item=SecondDropdown::find($id);
         $item->delete();
         if($item)
