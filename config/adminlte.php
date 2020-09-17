@@ -242,59 +242,17 @@ return [
             'icon' => 'fas fa-tv'
         ],
         [
-            'text' => 'Tailor Orders',
-            'url'  => 'orders',
-            'can'  => 'tailor_order',
-            'icon' => 'fas fa-bars',
+            'text' => 'Approver',
+            'url'  => 'approvers',
+            'can'  => 'approver_list',
+            'icon' => 'fas fa-users',
         ],
         [
-            'text' => 'All Orders',
-            'url'  => 'all-orders',
-            'can'  => 'all_orders',
+            'text' => 'Region',
+            'url'  => 'regions',
+            'can'  => 'region_list',
             'icon' => 'fas fa-bars'
         ],
-        [
-            'text' => 'Customer Orders',
-            'url'  => 'customer-orders',
-            'can'  => 'customer_order',
-            'icon' => 'fas fa-bars'
-        ],
-        [
-            'text' => 'Category',
-            'url'  => 'categories',
-            'can'  => 'category_list',
-            'icon' => 'fas fa-bars'
-        ],
-        [
-            'text' => 'Product',
-            'url'  => 'products',
-            'can'  => 'product_list',
-            'icon' => 'fas fa-tshirt'
-        ],  
-        [
-            'text' => 'Analytics',
-            'url'  => 'analytics',
-            // 'can'  => 'analytics_list',
-            'icon' => 'fas fa-chart-line'
-        ],        
-
-        [
-            'text' => 'Tailor',
-            'url'  => '/user-tailor',
-            'can'  => 'tailor_list',
-            'icon' => 'fas fa-user-circle'
-        ],
-        [
-            'text' => 'Customer',
-            'url'  => '/user-customer',
-            'can'  => 'customer_list',
-            'icon' => 'fas fa-female'
-        ],
-        [
-            'text' => 'Give Suggestion',
-            'url'  => '/suggestions/create',
-            'icon' => 'fas fa-comment'
-        ],  
 
         ['header' => 'account_settings'],
         [
@@ -348,6 +306,11 @@ return [
         'Datatables' => [
             'active' => true,
             'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '/vendor/datatables/buttons.server-side.js',
+                ],
                 [
                     'type' => 'js',
                     'asset' => false,

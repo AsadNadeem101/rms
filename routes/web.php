@@ -27,6 +27,17 @@ Route::group(['middleware' => 'auth'], function (){
         return view('welcome');
     });
 
+    //Region
+    Route::resource('regions','RegionController');
+
+    //Approver
+    Route::resource('approvers','ApproverController');
+
+    //First Dropdown
+    Route::resource('first_dropdowns','FirstDropdownController');
+
+    //Second Dropdown
+    Route::resource('second_dropdowns','SecondDropdownController');
    
     //Profile
     Route::group(['prefix' => 'profile'], function (){
